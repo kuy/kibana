@@ -125,6 +125,10 @@ define(function (require) {
     $state.index = $scope.indexPattern.id;
     $state.sort = getSort.array($state.sort, $scope.indexPattern);
 
+    $scope.$watch('state.index', function () {
+      $state.columns = getStateDefaults().columns;
+    });
+
     $scope.$watchCollection('state.columns', function () {
       $state.save();
     });
